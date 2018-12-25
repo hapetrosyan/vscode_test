@@ -8,8 +8,10 @@ from yahoo_finance import Share
 
 mo = misc_ops.MiscOps()
 
-yahoo = Share('YHOO')
-print (yahoo.get_open())
+print(mo.get_date_from_string('2018-01-14'))
+
+# yahoo = Share('YHOO')
+# print (yahoo.get_open())
 
 # # resp = requests.get('https://api.github.com/users/hadley/orgs')
 # resp = requests.get('link')
