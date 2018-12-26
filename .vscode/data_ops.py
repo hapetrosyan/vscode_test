@@ -11,7 +11,7 @@ from os import walk
 class DataOps:
     @staticmethod
     def get_stock_price_df_file(period_start, period_end, min_price):
-        df = pd.read_excel(r"C:\Q_C_Hakob\PythonProjects\vscode_test\.vscode\sp_micro.xlsx", sheet_name='sp',
+        df = pd.read_excel(r"C:\Q_C_Hakob\PythonProjects\vscode_test\.vscode\sp.xlsx", sheet_name='sp',
                            dtype={'Date': datetime.date, 'Symbol': str})
 
         df = df[df.Price > min_price][df.Date >= period_start][df.Date <= period_end]
