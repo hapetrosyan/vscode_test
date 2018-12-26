@@ -9,7 +9,7 @@ import requests
 mo = misc_ops.MiscOps()
 
 
-resp = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=demo')
+resp = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=K2L959U20SZIKBDG')
 
 if resp.status_code != 200:
     # This means something went wrong.
