@@ -88,8 +88,11 @@ class DataOps:
             # print('{} {}'.format(todo_item['id'], todo_item['login']))
             # print(todo_item)
 
-        resp_metadata = resp_json['Meta Data']
-        resp_time_series = resp_json['Time Series (Daily)']
+        # resp_metadata = resp_json['Meta Data']
+        try:
+            resp_time_series = resp_json['Time Series (Daily)']
+        except:
+            resp_time_series = {}
         return(mo.format_alphavantage_dict(resp_time_series))
 
     @staticmethod
@@ -106,8 +109,11 @@ class DataOps:
             # print('{} {}'.format(todo_item['id'], todo_item['login']))
             # print(todo_item)
 
-        resp_metadata = resp_json['Meta Data']
-        resp_time_series = resp_json['Time Series (5min)']
+        # resp_metadata = resp_json['Meta Data']
+        try:
+            resp_time_series = resp_json['Time Series (5min)']
+        except:
+            resp_time_series = {}
         return(mo.format_alphavantage_dict(resp_time_series))
 
     @staticmethod
@@ -124,6 +130,14 @@ class DataOps:
             # print('{} {}'.format(todo_item['id'], todo_item['login']))
             # print(todo_item)
 
-        resp_metadata = resp_json['Meta Data']
-        resp_time_series = resp_json['Weekly Time Series']
+        # resp_metadata = resp_json['Meta Data']
+        try:
+            resp_time_series = resp_json['Weekly Time Series']
+        except:
+            resp_time_series = {}
         return(mo.format_alphavantage_dict(resp_time_series))
+
+
+    @staticmethod
+    def get_all_symbols_list(df):
+        return df['Symbol'].unique()
