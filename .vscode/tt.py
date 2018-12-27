@@ -22,7 +22,7 @@ do = data_ops.DataOps()
 # resp_metadata = resp_json['Meta Data']
 # resp_time_series = resp_json['Time Series (Daily)']
 
-symbol_dict = do.get_alphavantage_100_days_dict('SAVE')
+symbol_dict = do.get_alphavantage_100_days_dict('AMZN')
 
 for key, value in symbol_dict.items():
     print(key, value)

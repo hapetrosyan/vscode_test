@@ -16,7 +16,12 @@ data_source = 'db_local'
 
 df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_source)
 
-# unique_symbols_list = mo.get_unique_symbols_list(df)
+unique_symbols_list = mo.get_unique_symbols_list(df)
+i = 0
+for symbol in unique_symbols_list:
+    # i++
+    print(i, symbol)
+
 
 # for symbol in unique_symbols_list:
 #     symbol_obj = s.Symbol(symbol, df, period_start, period_end)
@@ -26,6 +31,6 @@ df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_sourc
         # print(slope, intercept)
 
 
-symbol_object = s.Symbol('SAVE', df, period_start, period_end)
-dd = symbol_object.symbol_hist_price_df 
-print(dd)
+# symbol_object = s.Symbol('AMZN', df, period_start, period_end)
+# for k, v in symbol_object.alphavantage_intraday_5_min_dict.items():
+#     print(k, v)
