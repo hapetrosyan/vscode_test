@@ -12,7 +12,7 @@ period_start = '2018-11-15'
 period_end = '2018-12-24'
 min_stock_price = 0
 min_increase_pct = .01
-data_source = 'file'
+data_source = 'db_local'
 
 df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_source)
 

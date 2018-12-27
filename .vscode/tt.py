@@ -1,15 +1,15 @@
-import datetime
-import datetime
-from scipy import stats
-from re import sub
-import misc_ops
+# import datetime
+# from scipy import stats
+# from re import sub
+# import misc_ops
 import requests
+import data_ops
 
 
-mo = misc_ops.MiscOps()
+# mo = misc_ops.MiscOps()
 
 
-resp = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=MSFT&apikey=K2L959U20SZIKBDG')
+resp = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=SAVE&apikey=K2L959U20SZIKBDG')
 
 if resp.status_code != 200:
     # This means something went wrong.
@@ -24,4 +24,4 @@ resp_time_series = resp_json['Time Series (Daily)']
 
 
 for key, value in resp_time_series.items():
-    print(key, value)
+    print(key, type(value))
