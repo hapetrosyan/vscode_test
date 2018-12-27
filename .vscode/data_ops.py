@@ -7,6 +7,9 @@ from pandas import ExcelFile
 import shutil
 import os
 from os import walk
+import requests
+import misc_ops
+
 
 class DataOps:
     @staticmethod
@@ -71,5 +74,20 @@ class DataOps:
             return self.get_stock_price_df_db_prod(period_start, period_end, min_price)
 
 
+    @staticmethod
+    def get_alphavantage_100_days_dict(symbol):
+        mo = misc_ops.MiscOps()
+        request_link = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+symbol+'&apikey=K2L959U20SZIKBDG'
+        resp = requests.get(request_link)
 
-    # print(symbols_list)
+        if resp.status_code != 200:
+            # This means something went wrong.
+            raise ApiError('GET /tasks/ {}'.format(resp.status_code))
+        resp_json = resp.json() # ['Time Series (Daily)']
+        # for todo_item in resp.json():
+            # print('{} {}'.format(todo_item['id'], todo_item['login']))
+            # print(todo_item)
+
+        resp_metadata = resp_json['Meta Data']
+        resp_time_series = resp_json['Time Series (Daily)']
+        return(mo.format_alphavantage_dict(resp_time_series))

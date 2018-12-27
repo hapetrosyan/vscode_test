@@ -37,3 +37,17 @@ class MiscOps:
     @staticmethod
     def date_to_int(date):
         return int(sub('[^0-9]', '', str(date)))
+
+    @staticmethod
+    def format_alphavantage_dict(original_dict):
+        output_dict = {}
+
+        for k1, v1 in original_dict.items():
+            output_dict_1 = {}
+
+            for k, v in v1.items():
+                output_dict_1[k[3:]] = float(v1[k])
+
+            output_dict[k1] = output_dict_1
+
+        return output_dict
