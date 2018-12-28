@@ -32,6 +32,8 @@ class Symbol:
         # self.alphavantage_1_week_dict = do.get_alphavantage_1_week_dict(self.symbol)
 
         self.alphavantage_intraday_5_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_5_min_dict)
+        self.alphavantage_100_days_df = self.get_alphavantage_df_from_dict(self.alphavantage_100_days_dict)
+        # self.alphavantage_1_week_df = self.get_alphavantage_df_from_dict(self.alphavantage_1_week_dict)
 
 
     @staticmethod
