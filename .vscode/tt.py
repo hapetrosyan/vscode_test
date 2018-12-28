@@ -1,9 +1,13 @@
 import pandas as pd
+import collections
 
 
 
-df = pd.DataFrame(columns=['open', 'close'])
+d = {2: 'a', 1 :'b', 3: 'c'}
 
-df = df.append({'open': 1, 'close': 2}, ignore_index=True)
+od = collections.OrderedDict(sorted(d.items()))
 
-print(df)
+
+print(d)
+
+print(od.__dict__())

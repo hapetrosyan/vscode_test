@@ -56,7 +56,16 @@ class Symbol:
 
     @staticmethod
     def get_alphavantage_df_from_dict(alphavantage_dict):
-        alphavantage_df = pd.DataFrame(columns=['datetime', 'open', 'high', 'low', 'close', 'volume'])
+        alphavantage_df = pd.DataFrame(columns=['datetime', 'open', 'high', 'low', 'close', 'ccp', 'volume'])
+        i = 0
+        prev_close = 0
         for k, v in alphavantage_dict.items():
-            alphavantage_df = alphavantage_df.append({'datetime': k, 'open': v['open'], 'high': v['high'], 'low': v['low'], 'close': v['close'], 'volume': v['volume']}, ignore_index=True)
+            ccp = 0
+            if i > 0:
+                ccp = (v['close'] - prev_close) / prev_close
+            else:
+                ccp = 0
+            alphavantage_df = alphavantage_df.append({'datetime': k, 'open': v['open'], 'high': v['high'], 'low': v['low'], 'close': v['close'], 'ccp': ccp, 'volume': v['volume']}, ignore_index=True)
+            prev_close = v['close']
+            i = i + 1
         return alphavantage_df

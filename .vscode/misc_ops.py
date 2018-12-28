@@ -1,6 +1,7 @@
 import pandas as pd
 import datetime
 from re import sub
+import collections
 
 class MiscOps:
 
@@ -50,4 +51,6 @@ class MiscOps:
 
             output_dict[k1] = output_dict_1
 
-        return output_dict
+            output_dict_sorted = collections.OrderedDict(sorted(output_dict.items()))
+
+        return output_dict_sorted
