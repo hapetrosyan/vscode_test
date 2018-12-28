@@ -38,13 +38,4 @@ for symbol in unique_symbols_list:
         slope, intercept, r_value, p_value, std_err = stats.linregress(date_as_int, price)
         print(slope, intercept)
 '''
-
-# symbol_object = s.Symbol('AMZN', df, period_start, period_end)
-# for k, v in symbol_object.alphavantage_100_days_dict.items():
-#     print(k, v)
-
-# symbol_object = s.Symbol('AMZN', df, period_start, period_end)
-# for k, v in symbol_object.alphavantage_intraday_5_min_dict.items():
-#     print(k, v)
-
-print(type(symbol))
+print(0)
