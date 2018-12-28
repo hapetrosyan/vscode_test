@@ -14,3 +14,6 @@ def format_dict(original_dict):
     return output_dict
     
 print(format_dict(a))
+print(format_dict(a))
+print(format_dict(a))
+print(format_dict(a))

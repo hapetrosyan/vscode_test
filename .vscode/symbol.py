@@ -3,7 +3,7 @@ import misc_ops as mo
 import data_ops
 
 class Symbol:
-    def __init__(self, symbol, df, period_start, period_end):
+    def __init__(self, symbol, df = '', period_start = '', period_end = ''):
         do = data_ops.DataOps()
         self.symbol = symbol
         # self.hist_price_df = df
