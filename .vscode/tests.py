@@ -16,8 +16,8 @@ data_source = 'db_local'
 
 sym = s.Symbol('AMZN')
 
-print(sym.alphavantage_intraday_5_min_df)
-print(sym.alphavantage_100_days_df)
+print(sym.alphavantage_intraday_1_min_df)
+# print(sym.alphavantage_100_days_df)
 
 
 # alphavantage_intraday_5_min_df = pd.DataFrame(columns=['datetime', 'open', 'high', 'low', 'close', 'volume'])
