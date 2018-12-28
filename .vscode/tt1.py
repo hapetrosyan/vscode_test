@@ -1,19 +1,16 @@
 
+import datetime
+import pandas as pd
+import numpy as np
 
+todays_date = datetime.datetime.now().date()
+index = pd.date_range(todays_date-datetime.timedelta(10), periods=10, freq='D')
 
-a = {'1. open': '42.3400', '2. high': '33.333'}
-b = {}
+columns = ['A','B', 'C']
 
+df_ = pd.DataFrame(index=index, columns=columns)
+df_ = df_.fillna(0) # with 0s rather than NaNs
+data = np.array([np.arange(10)]*3).T
+df = pd.DataFrame(data, index=index, columns=columns)
 
-print(a)
-
-def format_dict(original_dict):
-    output_dict = {}
-    for k, v in original_dict.items():
-        output_dict[k[3:]] = float(original_dict[k])
-    return output_dict
-    
-print(format_dict(a))
-print(format_dict(a))
-print(format_dict(a))
-print(format_dict(a))
+print(df)

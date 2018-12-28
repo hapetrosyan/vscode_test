@@ -13,23 +13,46 @@ period_end = '2018-12-24'
 min_stock_price = 1000
 min_increase_pct = .01
 data_source = 'db_local'
-symbols = {}
+
+sym = s.Symbol('AMZN')
+
+print(sym.alphavantage_intraday_5_min_df)
+
+# alphavantage_intraday_5_min_df = pd.DataFrame(columns=['datetime', 'open', 'high', 'low', 'close', 'volume'])
 
 
-df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_source)
+# sym_dict = sym.alphavantage_intraday_5_min_dict.items()
+# for k, v in sym_dict:
+#     # print(k, v)
+#     # print(k, v['open'], v['high'], v['low'], v['close'], v['volume'])
+#     alphavantage_intraday_5_min_df = alphavantage_intraday_5_min_df.append({'datetime': k, 'open': v['open'], 'high': v['high'], 'low': v['low'], 'close': v['close'], 'volume': v['volume']}, ignore_index=True)
 
-unique_symbols_list = do.get_all_symbols_list(df)
 
-for symbol in unique_symbols_list:
-    symbol_object = s.Symbol(symbol)
-    symbols[symbol] = symbol_object
+# print(alphavantage_intraday_5_min_df)
 
-print(len(symbols))
-# print(symbols)
-    # for k, v in symbol_object.alphavantage_100_days_dict.items():
-    #     print(k, v)
 
-print(symbols['AMZN'].alphavantage_intraday_5_min_dict)
+# df = pd.DataFrame.from_dict(sym_dict, orient='index')
+
+
+
+
+# symbols = {}
+
+
+# df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_source)
+
+# unique_symbols_list = do.get_all_symbols_list(df)
+
+# for symbol in unique_symbols_list:
+#     symbol_object = s.Symbol(symbol)
+#     symbols[symbol] = symbol_object
+
+# print(len(symbols))
+# # print(symbols)
+#     # for k, v in symbol_object.alphavantage_100_days_dict.items():
+#     #     print(k, v)
+
+# print(symbols['AMZN'].alphavantage_intraday_5_min_dict)
 
 
 '''

@@ -31,6 +31,8 @@ class Symbol:
         self.alphavantage_intraday_5_min_dict = do.get_alphavantage_intraday_5_min_dict(self.symbol)
         # self.alphavantage_1_week_dict = do.get_alphavantage_1_week_dict(self.symbol)
 
+        self.alphavantage_intraday_5_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_5_min_dict)
+
 
     @staticmethod
     def get_symbol_series(df, symbol, period_start, period_end):
@@ -48,3 +50,9 @@ class Symbol:
         pc = ts.pct_change(1)
         return (pc.sum())
 
+    @staticmethod
+    def get_alphavantage_df_from_dict(alphavantage_dict):
+        alphavantage_df = pd.DataFrame(columns=['datetime', 'open', 'high', 'low', 'close', 'volume'])
+        for k, v in alphavantage_dict.items():
+            alphavantage_df = alphavantage_df.append({'datetime': k, 'open': v['open'], 'high': v['high'], 'low': v['low'], 'close': v['close'], 'volume': v['volume']}, ignore_index=True)
+        return alphavantage_df
