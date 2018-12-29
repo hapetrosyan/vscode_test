@@ -12,20 +12,32 @@ period_start = '2018-11-15'
 period_end = '2018-12-24'
 min_stock_price = 1000
 min_increase_pct = .01
-data_source = 'db_local'
+data_source = 'file'
 
-sym = s.Symbol('AMZN')
+# sym = s.Symbol('AMZN')
+symbols = {}
 
 # print(sym.alphavantage_intraday_1_min_df)
 # print(sym.alphavantage_100_days_df)
 # print(sym.alphavantage_intraday_5_min_df)
 
-d1 = sym.alphavantage_intraday_1_min_df
 
-print(d1['ccp'])
-print(d1['ccp'][-10:])
-print(sym.get_last_n_ccp_sum(d1, 10))
-print(sym.)
+df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_source)
+unique_symbols_list = do.get_all_symbols_list(df)
+
+for symbol in unique_symbols_list:
+    symbol_object = s.Symbol(symbol)
+    symbols[symbol] = symbol_object
+
+print(symbols)
+
+# print(sym.get_last_n_ccp_sum())
+# print(sym.get_last_n_ccp_sum(n = 10, period = '100_days'))
+
+
+
+
+
 
 
 
@@ -39,7 +51,7 @@ print(sym.)
 # print(alphavantage_intraday_5_min_df)
 
 
-# df = pd.DataFrame.from_dict(sym_dict, orient='index')
+
 
 
 # symbols = {}
@@ -47,11 +59,7 @@ print(sym.)
 
 # df = do.get_stock_price_df(period_start, period_end, min_stock_price, data_source)
 
-# unique_symbols_list = do.get_all_symbols_list(df)
 
-# for symbol in unique_symbols_list:
-#     symbol_object = s.Symbol(symbol)
-#     symbols[symbol] = symbol_object
 
 # print(len(symbols))
 # # print(symbols)

@@ -65,7 +65,7 @@ class Symbol:
         prev_close = 0
         for k, v in alphavantage_dict.items():
             ccp = 0
-            if i > 0:
+            if i > 0 and prev_close != 0:
                 ccp = (v['close'] - prev_close) / prev_close
             else:
                 ccp = 0

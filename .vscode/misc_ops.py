@@ -42,6 +42,7 @@ class MiscOps:
     @staticmethod
     def format_alphavantage_dict(original_dict):
         output_dict = {}
+        output_dict_sorted = {}
 
         for k1, v1 in original_dict.items():
             output_dict_1 = {}
