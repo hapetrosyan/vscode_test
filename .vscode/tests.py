@@ -16,12 +16,17 @@ data_source = 'db_local'
 
 sym = s.Symbol('AMZN')
 
-print(sym.alphavantage_intraday_1_min_df)
-print(sym.alphavantage_100_days_df)
-print(sym.alphavantage_intraday_5_min_df)
+# print(sym.alphavantage_intraday_1_min_df)
+# print(sym.alphavantage_100_days_df)
+# print(sym.alphavantage_intraday_5_min_df)
 
+d1 = sym.alphavantage_intraday_1_min_df
 
-# alphavantage_intraday_5_min_df = pd.DataFrame(columns=['datetime', 'open', 'high', 'low', 'close', 'volume'])
+print(d1['ccp'])
+print(d1['ccp'][-10:])
+print(sym.get_last_n_ccp_sum(d1, 10))
+print(sym.)
+
 
 
 # sym_dict = sym.alphavantage_intraday_5_min_dict.items()
@@ -35,8 +40,6 @@ print(sym.alphavantage_intraday_5_min_df)
 
 
 # df = pd.DataFrame.from_dict(sym_dict, orient='index')
-
-
 
 
 # symbols = {}

@@ -6,6 +6,20 @@ class Symbol:
     def __init__(self, symbol, df = '', period_start = '', period_end = ''):
         do = data_ops.DataOps()
         self.symbol = symbol
+       
+        self.alphavantage_100_days_dict = do.get_alphavantage_100_days_dict(self.symbol)
+        self.alphavantage_intraday_5_min_dict = do.get_alphavantage_intraday_5_min_dict(self.symbol)
+        self.alphavantage_intraday_1_min_dict = do.get_alphavantage_intraday_1_min_dict(self.symbol)
+        self.alphavantage_1_week_dict = do.get_alphavantage_1_week_dict(self.symbol)
+
+        self.alphavantage_intraday_5_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_5_min_dict)
+        self.alphavantage_intraday_1_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_1_min_dict)
+        self.alphavantage_100_days_df = self.get_alphavantage_df_from_dict(self.alphavantage_100_days_dict)
+        self.alphavantage_1_week_df = self.get_alphavantage_df_from_dict(self.alphavantage_1_week_dict)
+        
+        
+        
+        '''
         # self.hist_price_df = df
         # self.period_start = period_start
         # self.period_end = period_end
@@ -26,17 +40,7 @@ class Symbol:
         #     self.symbol_rolling_sum_1m = self.get_symbol_rolling_sum(self.symbol_series_1m)
         # self.symbol_series = self.get_symbol_series(self.hist_price_df, self.symbol, self.period_start, self.period_end)
         # self.symbol_rolling_sum = self.get_symbol_rolling_sum(self.symbol_series)
-
-        self.alphavantage_100_days_dict = do.get_alphavantage_100_days_dict(self.symbol)
-        self.alphavantage_intraday_5_min_dict = do.get_alphavantage_intraday_5_min_dict(self.symbol)
-        self.alphavantage_intraday_1_min_dict = do.get_alphavantage_intraday_1_min_dict(self.symbol)
-        # self.alphavantage_1_week_dict = do.get_alphavantage_1_week_dict(self.symbol)
-
-        self.alphavantage_intraday_5_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_5_min_dict)
-        self.alphavantage_intraday_1_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_1_min_dict)
-        self.alphavantage_100_days_df = self.get_alphavantage_df_from_dict(self.alphavantage_100_days_dict)
-        # self.alphavantage_1_week_df = self.get_alphavantage_df_from_dict(self.alphavantage_1_week_dict)
-
+        '''
 
     @staticmethod
     def get_symbol_series(df, symbol, period_start, period_end):
@@ -69,3 +73,17 @@ class Symbol:
             prev_close = v['close']
             i = i + 1
         return alphavantage_df
+    
+    def get_last_n_ccp_sum(self, period = '1_min', n = 20):
+        if period == '1_min':
+            df = self.alphavantage_intraday_1_min_df
+        elif period == '5_min':
+            df = self.alphavantage_intraday_5_min_df
+        elif period == '100_days':
+            df = self.alphavantage_100_days_df
+        elif period == '1_week':
+            df = self.alphavantage_1_week_df
+        else:
+            return 0
+            exit()
+        return sum(df['ccp'][-n:])
