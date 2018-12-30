@@ -9,6 +9,7 @@ import os
 from os import walk
 import requests
 import misc_ops
+import json
 
 
 class DataOps:
@@ -93,6 +94,8 @@ class DataOps:
             resp_time_series = resp_json['Time Series (Daily)']
         except:
             resp_time_series = {}
+        with open('result_'+symbol+'.json', 'w') as fp:
+            json.dump(resp_json, fp)
         return(mo.format_alphavantage_dict(resp_time_series))
 
     @staticmethod

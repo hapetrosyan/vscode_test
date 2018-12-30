@@ -17,6 +17,8 @@ class Symbol:
         self.alphavantage_100_days_df = self.get_alphavantage_df_from_dict(self.alphavantage_100_days_dict)
         self.alphavantage_1_week_df = self.get_alphavantage_df_from_dict(self.alphavantage_1_week_dict)
         
+        self.cpp_sum_20_100 = self.get_last_n_ccp_sum(n = 20, period = '100_days')
+        self.cpp_sum_10_100 = self.get_last_n_ccp_sum(n = 10, period = '100_days')
         
         
         '''

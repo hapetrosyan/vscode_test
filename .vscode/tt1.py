@@ -1,10 +1,13 @@
+import requests
+import json
 
-import datetime
-import pandas as pd
-import numpy as np
+symbol = 'AMZN'
+request_link = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+symbol+'&apikey=K2L959U20SZIKBDG'
+resp = requests.get(request_link)
+if resp.status_code != 200:
+    # This means something went wrong.
+    raise ApiError('GET /tasks/ {}'.format(resp.status_code))
+resp_json = resp.json()
 
-a= 1
-b=2
-
-if a > 0 and b != 9:
-    print(3)
+with open('result_'+symbol+'.json', 'w') as fp:
+    json.dump(resp_json, fp)

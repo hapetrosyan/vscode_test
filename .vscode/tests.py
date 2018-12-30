@@ -10,7 +10,7 @@ do = data_ops.DataOps()
 
 period_start = '2018-11-15'
 period_end = '2018-12-24'
-min_stock_price = 1000
+min_stock_price = 100
 min_increase_pct = .01
 data_source = 'file'
 
@@ -27,9 +27,15 @@ unique_symbols_list = do.get_all_symbols_list(df)
 
 for symbol in unique_symbols_list:
     symbol_object = s.Symbol(symbol)
-    symbols[symbol] = symbol_object
+    print (symbol, symbol_object.get_last_n_ccp_sum() , symbol_object.get_last_n_ccp_sum(n = 10, period = '100_days') )
+        # symbols[symbol] = symbol_object
 
-print(symbols)
+
+# print(len(symbols))
+
+# for k, v in symbols:
+#     print(k, v)
+
 
 # print(sym.get_last_n_ccp_sum())
 # print(sym.get_last_n_ccp_sum(n = 10, period = '100_days'))
