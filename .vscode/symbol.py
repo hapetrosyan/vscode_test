@@ -7,18 +7,26 @@ class Symbol:
         do = data_ops.DataOps()
         self.symbol = symbol
        
-        self.alphavantage_100_days_dict = do.get_alphavantage_100_days_dict(self.symbol)
-        self.alphavantage_intraday_5_min_dict = do.get_alphavantage_intraday_5_min_dict(self.symbol)
+        # self.alphavantage_100_days_dict = do.get_alphavantage_100_days_dict(self.symbol)
+        # self.alphavantage_intraday_5_min_dict = do.get_alphavantage_intraday_5_min_dict(self.symbol)
         self.alphavantage_intraday_1_min_dict = do.get_alphavantage_intraday_1_min_dict(self.symbol)
-        self.alphavantage_1_week_dict = do.get_alphavantage_1_week_dict(self.symbol)
+        # self.alphavantage_1_week_dict = do.get_alphavantage_1_week_dict(self.symbol)
 
-        self.alphavantage_intraday_5_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_5_min_dict)
+        # self.alphavantage_intraday_5_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_5_min_dict)
         self.alphavantage_intraday_1_min_df = self.get_alphavantage_df_from_dict(self.alphavantage_intraday_1_min_dict)
-        self.alphavantage_100_days_df = self.get_alphavantage_df_from_dict(self.alphavantage_100_days_dict)
-        self.alphavantage_1_week_df = self.get_alphavantage_df_from_dict(self.alphavantage_1_week_dict)
+        # self.alphavantage_100_days_df = self.get_alphavantage_df_from_dict(self.alphavantage_100_days_dict)
+        # self.alphavantage_1_week_df = self.get_alphavantage_df_from_dict(self.alphavantage_1_week_dict)
         
-        self.cpp_sum_20_100 = self.get_last_n_ccp_sum(n = 20, period = '100_days')
-        self.cpp_sum_10_100 = self.get_last_n_ccp_sum(n = 10, period = '100_days')
+        # self.ccp_sum_20_100 = self.get_last_n_ccp_sum(n = 20, period = '100_days')
+        # self.ccp_sum_10_100 = self.get_last_n_ccp_sum(n = 10, period = '100_days')
+        self.ccp_sum_100_1_min = self.get_last_n_ccp_sum(n = 100, period = '1_min')
+        self.ccp_sum_50_1_min = self.get_last_n_ccp_sum(n = 50, period = '1_min')
+        self.ccp_sum_20_1_min = self.get_last_n_ccp_sum(n = 20, period = '1_min')
+        self.ccp_sum_10_1_min = self.get_last_n_ccp_sum(n = 10, period = '1_min')
+        self.ccp_sum_5_1_min = self.get_last_n_ccp_sum(n = 5, period = '1_min')
+
+
+
         
         
         '''

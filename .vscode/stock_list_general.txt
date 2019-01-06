@@ -1,0 +1,4 @@
+AMZN
+GOOG
+MSFT
+ADP
